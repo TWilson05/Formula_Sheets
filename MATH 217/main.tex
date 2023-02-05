@@ -1,0 +1,558 @@
+
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage[
+    type={CC},
+    modifier={by-nc-sa},
+    version={3.0},
+]{doclicense}
+\usepackage[landscape]{geometry}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{dsfont}
+\usepackage{esint}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{amsmath,amssymb}
+
+\usepackage{array}
+\usepackage{gensymb}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{polynom}
+
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\makeatletter
+
+% Definitions for shortcuts
+\newcommand{\ih}{\hat{i}}
+\newcommand{\jh}{\hat{j}}
+\newcommand{\kh}{\hat{k}}
+\newcommand{\nh}{\hat{n}}
+\newcommand{\uh}{\hat{u}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vz}{\vec{z}}
+\newcommand{\vn}{\vec{n}}
+\newcommand{\vr}{\vec{r}}
+\newcommand{\vv}{\vec{v}}
+\newcommand{\va}{\vec{a}}
+\newcommand{\vb}{\vec{b}}
+\newcommand{\vc}{\vec{c}}
+\newcommand{\grad}{\vec{\nabla}}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+\newcommand{\brangle}[1]{\left\langle #1 \right\rangle}
+\newcommand{\brround}[1]{\left( #1 \right)}
+\newcommand{\brcurly}[1]{\left\{ #1 \right\}}
+\newcommand{\brsquare}[1]{\left[ #1 \right]}
+\newcommand{\brvertical}[1]{\left| #1 \right|}
+\newcommand{\matrixx}[1]{\left[\begin{matrix} #1
+\end{matrix}\right]}
+\newcommand{\detmatrix}[1]{\left|\begin{matrix} #1
+\end{matrix}\right|}
+\newcommand{\perm}[2]{\prescript{}{#1}{P}_{#2}}
+\newcommand{\comb}[2]{\prescript{}{#1}{C}_{#2}}
+\newcommand{\eval}[1]{\left. #1 \right|}
+\newcommand{\bigfrac}[2]{\frac{\displaystyle{#1}}{\displaystyle{#2}}}
+\newcommand{\eqnsystem}[1]{\left\{\begin{matrix} #1 \end{matrix}\right.}
+\newcommand{\R}{\mathds{R}}
+\newcommand{\augmatrix}[2]{\left[\begin{array}{#1|c}#2\end{array}\right]}
+\newcommand{\superaugmatrix}[2]{\left[\begin{array}{#1|#1}#2\end{array}\right]}
+
+%New operators
+\DeclareMathOperator{\arccot}{arccot}
+\DeclareMathOperator{\arccsc}{arccsc}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\erf}{erf}
+\DeclareMathOperator{\dir}{dir}
+\DeclareMathOperator{\adj}{adj}
+\DeclareMathOperator{\proj}{proj}
+\DeclareMathOperator{\spann}{span}
+\DeclareMathOperator{\Rot}{Rot}
+\DeclareMathOperator{\Reflection}{Ref}
+\DeclareMathOperator{\trace}{tr}
+\DeclareMathOperator{\comp}{comp}
+
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+
+\title{MATH 152 Formula Sheet}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+\renewcommand{\baselinestretch}{1.15}
+
+\advance\topmargin-.8in
+\advance\textheight3in
+\advance\textwidth3in
+\advance\oddsidemargin-1.5in
+\advance\evensidemargin-1.5in
+\parindent0pt
+\parskip2pt
+\newcommand{\hr}{\centerline{\rule{3.5in}{1pt}}}
+%\colorbox[HTML]{e4e4e4}{\makebox[\textwidth-2\fboxsep][l]{texto}
+\begin{document}
+
+\begin{center}{\huge{\textbf{MATH 217 - Formula Sheet}}}\\
+\end{center}
+\begin{multicols*}{3}
+
+\tikzstyle{mybox} = [draw=black, fill=white, very thick,
+    rectangle, rounded corners, inner sep=10pt, inner ysep=10pt]
+\tikzstyle{fancytitle} =[fill=black, text=white, font=\bfseries]
+
+ 
+
+%------------ Vectors ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \textbf{Basics}
+    \hline
+    \small{
+    	\begin{tabular}{lp{6cm} l}
+    	\\
+    	Direction Vector & $\vec{ab}=\vec{b}-\vec{a}$\\
+    	Norm & $\|x\|=\sqrt{a_1^2+a_2^2+\dotsb+a_a^2}$\\
+    	Unit Vector & $\hat{u}=\dfrac{\vec{u}}{\|u\|}$\\
+    	Perpendicular & $\vec{a}^\perp=\det\begin{bmatrix}
+		    \hat{i} & \hat{j}\\
+		    a_1 & a_2
+		\end{bmatrix}=\brangle{-a_2,a_1}$\\
+		\end{tabular}
+	}
+	\vspace{.3cm}
+	\\
+    \textbf{Dot Product}
+    \hline
+    \small{
+    	\begin{tabular}{lp{5cm} l}
+    	\\
+    	$\vec{a}\cdot\vec{b}=a_1b_1+a_2b_2+\dotsb+a_nb_n$\\
+    	$\vec{a}\cdot\vec{b}=\vec{b}\cdot\vec{a}$\\
+    	$\vec{a}\cdot\vec{b}=\|a\|\|b\|\cos\theta$\\
+    	$\vec{a}\perp\vec{b}$ iff $\vec{a}\cdot\vec{b}=0$\\
+		\end{tabular}
+	}
+	\vspace{.3cm}
+	\\
+	\textbf{Cross Product}
+    \hline
+    \small{
+    	\begin{tabular}{lp{6cm} l}
+    	\\
+    	$\vec{a}\times\vec{b}=\det\begin{bmatrix}
+    	    \hat{i} & \hat{j} & \hat{k}\\
+    	    a_1 & a_2 & a_3\\
+    	    b_1 & b_2 & b_3
+    	\end{bmatrix}=\vec{n}_{\vec{a},\vec{b}}$\\
+    	$\vec{a}\times\vec{b}=-\vec{b}\times\vec{a}$\\
+    	$\|\vec{a}\times\vec{b}\|=\|\vec{a}\|\|\vec{b}\|\sin\theta$\\
+    	$\vec{a}$ is parallel to $\vec{b}$ iff $\vec{a}\times\vec{b}=0$\\
+    	$\vec{a}\cdot(\vec{b}\times\vec{c})=\det\begin{bmatrix}
+		    -\vec{a}-\\
+		    -\vec{b}-\\
+		    -\vec{c}-
+		\end{bmatrix}$
+		\end{tabular}
+	}
+	\vspace{.3cm}
+	\\
+    \textbf{Projection and Perpendicular}
+    \hline
+    \small{
+    	\begin{tabular}{lp{5cm} l}
+    	\\
+    	proj$_{\vec{b}}(\vec{a})=\dfrac{\vec{a}\cdot\vec{b}}{\|\vec{b}\|^2}\vec{b}=(\vec{a}\cdot\hat{b})\hat{b}=\comp_{\vb}(\va)\hat{b}$\\
+    	perp$_{\vec{b}}(\vec{a})=\vec{a}-$proj$_{\vec{b}}(\vec{a})$
+		\end{tabular}
+	}
+	\vspace{.3cm}
+	\\
+    \textbf{Area and Volume}
+    \hline
+    \small{
+    	\begin{tabular}{lp{5cm} l}
+    	\\
+    	$A=\|\vec{a}\times\vec{b}\|$\\
+    	$A=\left |\det\begin{bmatrix}
+    	    -\vec{a}-\\
+    	    -\vec{b}-
+    	    \end{bmatrix}\right |$\\
+    	$V=|\vec{a}\cdot(\vec{b}\times\vec{c})|=\left |\det\begin{bmatrix}
+		    -\vec{a}-\\
+		    -\vec{b}-\\
+		    -\vec{c}-
+		\end{bmatrix}\right |$
+		\end{tabular}
+	}
+    \end{minipage}
+};
+%------------ Vectors ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Vectors};
+\end{tikzpicture}
+%------------ Lines and Planes ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \textbf{Line Equations}
+    \hline
+    \small{
+    	\begin{tabular}{lp{4cm} l}
+    	\\
+    	Parametric & $\vec{x}=\vec{a}t+\vec{p}$\\
+    	Equation Form in $\mathds{R}^2$ & $\vec{x}\cdot\vec{a}^\perp=x_1a^\perp_1+x_2a^\perp_2=d$\\
+    	Equation Form in $\mathds{R}^3$ & $\left\{\begin{matrix}
+    	   \vec{x}\cdot\vec{a}^\perp=x_1a^\perp_1+x_2a^\perp_2=d_1\\
+    	   \vec{x}\cdot\vec{b}^\perp=x_1b^\perp_1+x_2b^\perp_2=d_2
+    	\end{matrix}\right.$
+		\end{tabular}
+	}
+	\vspace{.3cm}
+	\\
+    \textbf{Plane Equations}
+    \hline
+    \small{
+    	\begin{tabular}{lp{4cm} l}
+    	\\
+    	Parametric & $\vec{x}=\vec{a}s+\vec{b}t+\vec{p}$\\
+    	Equation Form in $\mathds{R}^3$ & $\vec{x}\cdot\vec{n}=d$
+		\end{tabular}
+	}
+		\vspace{.3cm}
+	\\
+    \textbf{Intersection of Objects}
+    \hline
+    \small{
+    	\begin{tabular}{lp{4cm} l}
+    	\\
+    	Intersection of Planes:\\
+    	Solve $\begin{bmatrix}
+    	    n_1 & n_2 & n_3\\
+    	    m_1 & m_2 & m_3
+    	\end{bmatrix}
+    	\begin{bmatrix} x_1\\ x_2\\ x_3
+    	\end{bmatrix}=\begin{bmatrix} d_1\\ d_2
+    	\end{bmatrix}$\\
+    	or do $\vn\times\vec{m}$
+		\end{tabular}
+	}
+    \end{minipage}
+};
+%------------ Lines and Planes ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Lines and Planes};
+\end{tikzpicture}
+%------------ Parametric Forms ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \textbf{Product Rules}
+    \hline
+    \small{
+    	\begin{tabular}{lp{5cm} l}
+    	\\
+    	Scalar Times Vector & $\frac{d}{dt}(f(t)\vr(t))=f'\vr+f\vr'$\\
+    	Dot Product &
+    	$\frac{d}{dt}(\vec{u}(t)\cdot\vv(t))=\vec{u}'\cdot\vv+\vec{u}\cdot\vv'$\\
+    	Cross Product & $\frac{d}{dt}(\vec{u}(t)\times \vv(t))=\vec{u}'\times\vv+\vec{u}\times\vv'$
+		\end{tabular}
+	}
+	\vspace{.3cm}
+	\\
+	\textbf{Arc Length}
+    \hline
+    $$ds=\|\vr'(t)\|dt$$
+	$$s=\int_{t_0}^{t_f}\|\vr'(t)\|dt=\int_{t_0}^{t_f}\sqrt{(x')^2+(y')^2+(z')^2}dt$$
+    \end{minipage}
+};
+%------------ Parametric Forms ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Vector Valued functions of one variable};
+\end{tikzpicture}
+
+%------------ Divergence and Curl ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \textbf{Divergence and Curl}
+    \hline
+    \small{
+    	\begin{tabular}{lp{7cm} l}
+    	\\
+    	Divergence & $\text{div}(\vec{F})=\grad\cdot\vec{F}$\\
+    	Curl & $\text{curl}(\vec{F})=\grad\times\vec{F}$\\
+    	& $\text{curl}(\vec{F})=\brangle{R_y-Q_z,P_z-R_x,Q_x-P_y}$\\
+		\end{tabular}
+		$\vec{F}$ is a potential if $\vec{F}$ is simply connected and $\text{curl}(\vec{F})=\vec{0}$
+	}
+    \end{minipage}
+};
+%------------ Divergence and Curl ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Divergence and Curl};
+\end{tikzpicture}
+
+%------------ Partial Derivatives ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \textbf{Basics}
+    \hline
+    \small{
+    	\begin{tabular}{lp{5cm} l}
+    	\\
+    	Gradient & $\grad f=\brangle{\dfrac{\partial f}{\partial x},\dfrac{\partial f}{\partial y},\dfrac{\partial f}{\partial z}}$\\
+    	Directional Derivative & $(D_{\uh}f)(x_0,y_0)=(\grad f)(x_0,y_0)\cdot\uh$\\
+    	Chain Rule & $\dfrac{dz}{dt}=\dfrac{\partial z}{\partial x}\cdot\dfrac{dx}{dt}+\dfrac{\partial z}{\partial y}\cdot\dfrac{dy}{dt}$
+		\end{tabular}
+	}
+	Chain Rule for Functions of Several Variables
+	$$\matrixx{\dfrac{\partial z}{\partial s}\\\dfrac{\partial z}{\partial t}}=\matrixx{\dfrac{\partial x}{\partial s}&\dfrac{\partial y}{\partial s}\\\dfrac{\partial x}{\partial t}&\dfrac{\partial y}{\partial t}}\matrixx{\dfrac{\partial z}{\partial x}\\\dfrac{\partial z}{\partial y}}=\matrixx{\dfrac{\partial z}{\partial x}\cdot\dfrac{\partial x}{\partial s}+\dfrac{\partial z}{\partial y}\cdot\dfrac{\partial y}{\partial s}\\ \dfrac{\partial z}{\partial x}\cdot\dfrac{\partial x}{\partial t}+\dfrac{\partial z}{\partial y}\cdot\dfrac{\partial y}{\partial t}}$$
+	Radial vectors $\grad r^n=nr^{n-1}\vr$\\
+	Divergence product rule $\grad\cdot (f\vec{F})=\grad f\cdot \vec{F}+(f)(\grad\cdot\vec{F})$
+	\vspace{.3cm}
+	\\
+	\textbf{Tangent Planes}
+    \hline
+    \small{
+    	\begin{tabular}{lp{5cm} l}
+    	\\
+    	Plane tangent to the graph $z=f(x,y)$: \\
+    	$z=z_0+f_x(x_0,y_0)(x-x_0)+f_y(x_0,y_0)(y-y_0)$\\
+    	\\
+    	Plane tangent to level surface $f(x,y,z)=c$\\
+    	at $P=(x_0,y_0,z_0)$:\\
+    	$f_x(P)(x-x_0)+f_y(P)(y-y_0)+f_z(P)(z-z_0)=0$\\
+		\end{tabular}
+	}
+		\vspace{.3cm}
+	\\
+	\textbf{Linear Approximation}
+    \hline
+    \small{
+    	\begin{tabular}{lp{5cm} l}
+    	\\
+    	Of 1 Variable & $\Delta f\approx  f'(x_0)\Delta x$\\
+    	Of 2 Variables & $\Delta f\approx  f_x(x_0,y_0)\Delta x+f_y(x_0,y_0)\Delta y$
+		\end{tabular}
+	}
+		\vspace{.3cm}
+	\\
+	\textbf{Classification of Critical Points and Optimization}
+    \hline
+    \small{
+    	\begin{tabular}{lp{5cm} l}
+    	\\
+    	$D(x,y)=\detmatrix{f_{xx}&f_{xy}\\f_{yx}&f_{yy}}=f_{xx}f_{yy}-f_{xy}^2$\\
+    	If $D(x_0,y_0)<0$, $(x_0,y_0)$ is a saddle\\
+    	If $D(x_0,y_0)>0$ and $f_{xx}<0$, $(x_0,y_0)$ is a local max\\
+    	If $D(x_0,y_0)>0$ and $f_{xx}>0$, $(x_0,y_0)$ is a local min\\
+    	If $D(x_0,y_0)=0$ then $(x_0,y_0)$ is not an ordinary \\
+    	critical point.\\
+    	\\
+    	Lagrange Multipliers\\
+    	$\eqnsystem{(\grad f)(x_0,y_0,z_0)=\lambda(\grad g)(x_0,y_0,z_0)\\g(x,y,z_0)=0}$
+		\end{tabular}
+	}
+    \end{minipage}
+};
+%------------ Partial Derivatives ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Partial Derivatives};
+\end{tikzpicture}
+
+%------------ Multiple Integrals ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \textbf{Change of Coordinates}
+    \hline
+    \small{
+    	\begin{tabular}{lp{5cm} l}
+    	\\
+    	Polar & $dA=rdrd\theta$\\
+    	& $r^2=x^2+y^2$\\
+    	& $x=r\cos\theta,\ y=r\sin\theta$\\
+    	Cylindrical & $dV=rdzdrd\theta$\\
+    	& $r^2=x^2+y^2$\\
+    	& $x=r\cos\theta,\ y=r\sin\theta,\ z=z$\\
+    	Spherical & $dV=\rho^2\sin\phi d\rho d\phi d\theta$\\
+    	& $\rho^2=x^2+y^2+z^2$\\
+    	& $x=\rho\cos\theta\sin\phi$\\
+    	& $y=\rho\sin\theta\sin\phi$\\
+    	& $z=\rho\cos\phi$\\
+    	General & $dA=\detmatrix{x_u&x_v\\y_u&y_v}dudv$
+		\end{tabular}
+	}
+	\vspace{.3cm}
+	\\
+	\textbf{Applications}
+    \hline
+    \small{
+    	\begin{tabular}{lp{5cm} l}
+    	\\
+    	Area & $A=\displaystyle{\iint_RdA}$\\
+    	Average value & $\displaystyle{\overline{f(x,y)}=\frac{1}{\text{Area}(R)}\iint_Rf(x,y)dA}$\\
+    	Average height & $\displaystyle{\overline{y}=\frac{1}{\text{Area}(R)}\iint_RydA}$\\
+    	Mass of region & $\displaystyle{m=\iint_R}\rho(x,y)dA$\\
+    	Center of mass & $\displaystyle{\overline{x}=\frac{1}{\text{Mass}(R)}\iint_Rx\rho(x,y)dA}$\\
+    	Moment of inertia & $\displaystyle{I_a=\iint_RD(x,y)^2\rho(x,y)dA}$\\
+    	Surface Area & $\displaystyle{S=\iint_R}\sqrt{1+f_x^2+f_y^2}dA$
+		\end{tabular}
+	}
+    \end{minipage}
+};
+%------------ Multiple Integrals ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Multiple Integrals};
+\end{tikzpicture}
+
+%------------ Vector Integrals ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \textbf{Line and Work Integrals}
+    \hline
+    $$\int_C fds=\int_C f(\vr(t))\|\vr'(t)\|dt$$
+    $$\int_C\vec{F}\cdot d\vec{r}=\int_C\vec{F}\cdot\hat{T}ds=\int_C\vec{F}(t)\cdot\vr'(t) dt$$
+	\textbf{Surface and Flux Integrals}
+    \hline
+    $$\iint_S fdS=\pm\iint_Sf(\vr(u,v))\|\vr_u\times\vr_v\|dudv$$
+    $$\iint_S\vec{F}\cdot d\vec{S}=\iint_S\vec{F}\cdot\nh dS=\pm\iint_S\vec{F}(\vr(u,v))\cdot(\vr_u\times\vr_v)dudv$$
+    \end{minipage}
+};
+%------------ Vector Integrals ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Line and Surface Integrals};
+\end{tikzpicture}
+
+%------------ Vector Integrals ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \textbf{Integral Theorems}
+    \hline
+    $$\iint_R(Q_x-P_y)dA=\oint_{\partial R}\vec{F}\cdot d\vr$$
+    $$\iint_S(\grad\times\vec{F})\cdot d\vec{S}=\oint_{\partial S}\vec{F}\cdot d\vr$$
+    $$\iiint_E(\grad\cdot\vec{F})dV=\oiint_{\partial E}\vec{F}\cdot d\vec{S}$$
+    \textbf{Differential Forms}
+    \hline
+    $$\Omega^k(U)\cdot\Omega^l(U)\to\Omega^{k+l}(U)$$
+    $$d:\ \Omega^k(U)\to\Omega^{k+1}(U)$$
+    $$\text{for }\alpha\in\Omega^k(U),\ \beta\in\Omega^l(U),$$
+    $$\alpha\wedge\beta=(-1)^{kl}\beta\wedge\alpha$$
+    $$d(\alpha\wedge\beta)=d\alpha\wedge\beta+(-1)^k\alpha\wedge d\beta$$
+    $$\int_{\partial M}\alpha = \int_{M}d\alpha$$
+    \begin{tabular}{c|c}
+    $k$-form & function/vector field\\
+    \hline
+    $\Omega^0(U)$ & $f$\\
+    $\Omega^1(U)$ & $F_1dx+F_2dy+F_3dz$\\
+    $\Omega^2(U)$ & $F_1dy\wedge dz+F_2dz\wedge dx+F_3dx\wedge dy$\\
+    $\Omega^3(U)$ & $fdx\wedge dy\wedge dz$
+    \end{tabular}
+    \end{minipage}
+};
+%------------ Vector Integrals ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Integral Theorems and Differential Forms};
+\end{tikzpicture}
+
+
+
+%------------ Trig ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \textbf{Basic Trig Identities}
+    \hline
+    \small{
+    	\begin{tabular}{lp{5cm} l}
+    	\\
+    	Pythagorean & $\sin^2\theta+\cos^2\theta=1$\\
+    	& $\sec^2\theta-\tan^2\theta=1$\\
+    	& $\csc^2\theta-\cot^2\theta=1$\\
+    	Double Angle & $\sin(2\theta)=2\sin\theta\cos\theta$\\
+    	& $\cos(2\theta)=\cos^2\theta-\sin^2\theta$\\
+    	& $\cos(2\theta)=2\cos^2\theta-1$\\
+    	& $\cos(2\theta)=1-2\sin^2\theta$\\
+    	Half Angle & $\sin^2\theta=\dfrac{1-\cos(2\theta)}{2}$\\
+    	& $\cos^2\theta=\dfrac{1+\cos(2\theta)}{2}$\\
+    	Integrals & $\displaystyle{\int_0^{2\pi}\sin^2\theta d\theta=\int_0^{2\pi}\cos^2\theta d\theta=\pi}$
+		\end{tabular}
+	}
+    \end{minipage}
+};
+%------------ Trig ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Trigonometry};
+\end{tikzpicture}
+
+
+%------------ Trig ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \small{
+    Integrals of a function $\int_C fds$
+    \begin{itemize}
+        \item Use a parameterization
+        $$\int_C fds=\int_a^bf(\vr(t))\|d\vr'(t)\|dt$$
+    \end{itemize}
+    Integrals of a vector field (work integrals): $\int_C\vec{F}\cdot d\vr$
+    \begin{itemize}
+        \item If $\vec{F}$ is conservative, use FTL $(\grad f=\vec{F})$
+        $$\int_C\vec{F}\cdot d\vec{r}=f(P_2)-f(P_1)$$
+        (if $\vec{F}$ is not conservative, we can try $\vec{F}=\vec{F}_1+\vec{F_2}$)
+        \item If $C$ is closed, use Green's/Stoke's Theorem
+        $$\oint_{\partial S}\vec{F}\cdot d\vr=\iint_S(\grad\times\vec{F})\cdot d\vec{S}$$
+        (if $C$ is not closed, we can try $\partial S=C+C'$)
+        \item Compute using a parameterization
+        $$\int_C\vec{F}\cdot d\vr=\int_a^b\vec{F}(\vr(t))\cdot\vr'(t)dt$$
+    \end{itemize}
+    }
+    \small{
+    Integral of a function over a surface
+    \begin{itemize}
+        \item Use a parameterization
+        $$\iint_S fdS=\iint_Sf(\vr(u,v))\|\vr_u\times\vr_v\|dudv$$
+    \end{itemize}
+    Integral of a vector field over a surface: $\iint_S\vec{F}\cdot d\vec{S}$
+    \begin{itemize}
+        \item If $\vec{F}=\grad\times\vec{G}$, apply Stoke's Theorem
+       $$\iint_S(\grad\times\vec{F})\cdot d\vec{S}=\oint_{\partial S}\vec{F}\cdot d\vr$$
+        \item If $S$ is closed, apply Divergence Theorem
+        $$\oiint_{\partial E}\vec{F}\cdot d\vec{S}=\iiint(\grad\cdot\vec{F})dV$$
+        (If $S$ is not closed, we can try ${\partial E=S+S'}$)
+        \item Compute using a parameterization
+        $$\iint_S\vec{F}\cdot d\vec{S}=\pm\iint_S\vec{F(\vr(u,v))\cdot(\vr_u\times\vr_v)dudv}$$
+    \end{itemize}
+    }
+    \end{minipage}
+};
+%------------ Trig ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Integration Summary};
+\end{tikzpicture}
+
+
+%-------------------Authorship-----------------------
+\begin{center}
+    \framebox{
+    \parbox[t][.5cm]{7.5cm}{
+    \addvspace{0.2cm} \centering 
+    \footnotesize Compiled by Tyler Wilson 2021 
+    } 
+}
+\end{center}
+\end{multicols*}
+
+
+
+\end{document}
+
+
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status Help
