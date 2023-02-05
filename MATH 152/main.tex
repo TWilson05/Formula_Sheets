@@ -1,0 +1,600 @@
+
+\documentclass{article}
+\usepackage{hyperref}
+\usepackage[
+    type={CC},
+    modifier={by-nc-sa},
+    version={3.0},
+]{doclicense}
+\usepackage[landscape]{geometry}
+\usepackage{url}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{dsfont}
+\usepackage{esint}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usetikzlibrary{decorations.pathmorphing}
+\usepackage{amsmath,amssymb}
+
+\usepackage{colortbl}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\makeatletter
+
+\newcommand*\bigcdot{\mathpalette\bigcdot@{.5}}
+\newcommand*\bigcdot@[2]{\mathbin{\vcenter{\hbox{\scalebox{#2}{$\m@th#1\bullet$}}}}}
+\makeatother
+
+\title{MATH 152 Formula Sheet}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+
+\renewcommand{\baselinestretch}{1.15}
+
+\advance\topmargin-.8in
+\advance\textheight3in
+\advance\textwidth3in
+\advance\oddsidemargin-1.5in
+\advance\evensidemargin-1.5in
+\parindent0pt
+\parskip2pt
+\newcommand{\hr}{\centerline{\rule{3.5in}{1pt}}}
+%\colorbox[HTML]{e4e4e4}{\makebox[\textwidth-2\fboxsep][l]{texto}
+\begin{document}
+
+\begin{center}{\huge{\textbf{MATH 152 - Unofficial Formula Sheet}}}\\
+\end{center}
+\begin{multicols*}{3}
+
+\tikzstyle{mybox} = [draw=black, fill=white, very thick,
+    rectangle, rounded corners, inner sep=10pt, inner ysep=10pt]
+\tikzstyle{fancytitle} =[fill=black, text=white, font=\bfseries]
+
+ 
+
+%------------ Vectors ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \textbf{Basics}
+    \hline
+    \small{
+    	\begin{tabular}{lp{4cm} l}
+    	\\
+    	Direction Vector & $\vec{ab}=\vec{b}-\vec{a}$\\
+    	Norm & $\|x\|=\sqrt{a_1^2+a_2^2+\dotsb+a_a^2}$\\
+    	Unit Vector & $\hat{u}=\frac{\vec{u}}{\|u\|}$\\
+    	Perpendicular & $\vec{a}^\perp=\det\begin{bmatrix}
+		    \hat{i} & \hat{j}\\
+		    a_1 & a_2
+		\end{bmatrix}$\\
+		\end{tabular}
+	}
+	\vspace{.3cm}
+	\\
+    \textbf{Dot Product}
+    \hline
+    \small{
+    	\begin{tabular}{lp{5cm} l}
+    	\\
+    	$\vec{a}\cdot\vec{b}=a_1b_1+a_2b_2+\dotsb+a_nb_n$\\
+    	$\vec{a}\cdot\vec{b}=\vec{b}\cdot\vec{a}$\\
+    	$\vec{a}\cdot\vec{b}=\|a\|\|b\|\cos\theta$\\
+    	$\vec{a}\perp\vec{b}$ if $\vec{a}\cdot\vec{b}=0$\\
+		\end{tabular}
+	}
+	\vspace{.3cm}
+	\\
+	\textbf{Cross Product}
+    \hline
+    \small{
+    	\begin{tabular}{lp{6cm} l}
+    	\\
+    	$\vec{a}\times\vec{b}=\det\begin{bmatrix}
+    	    \hat{i} & \hat{j} & \hat{k}\\
+    	    a_1 & a_2 & a_3\\
+    	    b_1 & b_2 & b_3
+    	\end{bmatrix}=\vec{n}_{\vec{a},\vec{b}}$\\
+    	$\vec{a}\times\vec{b}=-\vec{b}\times\vec{a}$\\
+    	$\|\vec{a}\times\vec{b}\|=\|\vec{a}\|\|\vec{b}\|\sin\theta$\\
+    	$\vec{a}\shortparallel\vec{b}$ if $\vec{a}\times\vec{b}=0$\\
+    	$\vec{a}\cdot(\vec{b}\times\vec{c})=\det\begin{bmatrix}
+		    -\vec{a}-\\
+		    -\vec{b}-\\
+		    -\vec{c}-
+		\end{bmatrix}$
+		\end{tabular}
+	}
+	\vspace{.3cm}
+	\\
+    \textbf{Projection and Perpendicular}
+    \hline
+    \small{
+    	\begin{tabular}{lp{5cm} l}
+    	\\
+    	proj$_{\vec{b}}(\vec{a})=\frac{\vec{a}\cdot\vec{b}}{\|\vec{b}\|^2}\vec{b}=(\vec{a}\cdot\hat{b})\hat{b}$\\
+    	perp$_{\vec{b}}(\vec{a})=\vec{a}-$proj$_{\vec{b}}(\vec{a})$
+		\end{tabular}
+	}
+	\vspace{.3cm}
+	\\
+    \textbf{Area and Volume}
+    \hline
+    \small{
+    	\begin{tabular}{lp{5cm} l}
+    	\\
+    	$A=\|\vec{a}\times\vec{b}\|$\\
+    	$A=\left |\det\begin{bmatrix}
+    	    -\vec{a}-\\
+    	    -\vec{b}-
+    	    \end{bmatrix}\right |$\\
+    	$V=|\vec{a}\cdot(\vec{b}\times\vec{c})|=\left |\det\begin{bmatrix}
+		    -\vec{a}-\\
+		    -\vec{b}-\\
+		    -\vec{c}-
+		\end{bmatrix}\right |$
+		\end{tabular}
+	}
+    \end{minipage}
+};
+%------------ Vectors ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Vectors};
+\end{tikzpicture}
+%------------ Lines and Planes ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \textbf{Line Equations}
+    \hline
+    \small{
+    	\begin{tabular}{lp{4cm} l}
+    	\\
+    	Parametric & $\vec{x}=\vec{a}t+\vec{p}$\\
+    	Equation Form in $\mathds{R}^2$ & $\vec{x}\cdot\vec{a}^\perp=x_1a^\perp_1+x_2a^\perp_2=d$\\
+    	Equation Form in $\mathds{R}^3$ & $\left\{\begin{matrix}
+    	   \vec{x}\cdot\vec{a}^\perp=x_1a^\perp_1+x_2a^\perp_2=d_1\\
+    	   \vec{x}\cdot\vec{b}^\perp=x_1b^\perp_1+x_2b^\perp_2=d_2
+    	\end{matrix}\right.$
+		\end{tabular}
+	}
+	\vspace{.3cm}
+	\\
+    \textbf{Plane Equations}
+    \hline
+    \small{
+    	\begin{tabular}{lp{4cm} l}
+    	\\
+    	Parametric & $\vec{x}=\vec{a}s+\vec{b}t+\vec{p}$\\
+    	Equation Form in $\mathds{R}^3$ & $\vec{x}\cdot\vec{n}=d$
+		\end{tabular}
+	}
+		\vspace{.3cm}
+	\\
+    \textbf{Intersection of Objects}
+    \hline
+    \small{
+    	\begin{tabular}{lp{4cm} l}
+    	\\
+    	Intersection of Planes:\\
+    	Solve $\begin{bmatrix}
+    	    n_1 & n_2 & n_3\\
+    	    m_1 & m_2 & m_3
+    	\end{bmatrix}
+    	\begin{bmatrix} x_1\\ x_2\\ x_3
+    	\end{bmatrix}=\begin{bmatrix} d_1\\ d_2
+    	\end{bmatrix}$
+		\end{tabular}
+	}
+	\vspace{.3cm}
+	\\
+	\textbf{Distance Between Objects}
+    \hline
+    \small{
+    	\begin{tabular}{lp{4cm} l}
+    	\\
+    	Distance between point $\vec{q}$ and Line $\vec{x}=\vec{p}+\vec{a}t$:\\
+    	$d=\|$perp$_{\vec{a}}(\vec{pq})\|=\|$proj$_{\vec{a}^\perp}(\vec{pq})\|$\\
+    	Distance between point  $\vec{q}$ and plane $\vec{x}=\vec{p}+\vec{a}s+\vec{b}t$:\\
+    	$d=\|$proj$_{\vec{n}}(\vec{pq})\|$\\
+    	\\
+    	General Procedure:\\
+    	set $d=\|\vec{x}_1-\vec{x}_2\|$ using parametric forms of $\vec{x}$\\
+    	solve for $t_1, t_2, ...$ using $\vec{\nabla}d=\vec{0}$\\
+    	plug back in values of $t_1, t_2, ...$ and solve for $d$
+		\end{tabular}
+	}
+    \end{minipage}
+};
+%------------ Lines and Planes ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Lines and Planes};
+\end{tikzpicture}
+
+%------------ GE ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \small{
+    	\begin{tabular}{lp{6cm} l}
+    	Step 1: & Set the top left entry to 1 (or as the LCD of the first column)\\
+    	Step 2: & Use the first row to 'kill off' all other entries in the first column\\
+    	Step 3: & For column 2, use one row to 'kill off' all the other entries in that column\\
+    	Step 4: & Repeat process until finished
+		\end{tabular}
+	}
+    \end{minipage}
+};
+%------------ GE ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Gaussian Elimination};
+\end{tikzpicture}
+
+%------------ Linear Independence ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \small{
+    	\begin{tabular}{lp{6cm} l}
+    	\\
+    	$\vec{a}$, $\vec{b}$, and $\vec{c}$ are linearly dependent if:\\
+    	$\det\begin{pmatrix}
+    	    -\vec{a}-\\
+    	    -\vec{b}-\\
+    	    -\vec{c}-
+    	\end{pmatrix}=0$\\
+    	or if $\begin{bmatrix}
+    	    | & | & |\\
+    	    \vec{a} & \vec{b} & \vec{c}\\
+    	    | & | & |
+    	\end{bmatrix}$ has no unique solution.\\
+    	
+		\end{tabular}
+	}
+    \end{minipage}
+};
+%------------ Linear Independence ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Linear Independence};
+\end{tikzpicture}
+
+%------------ Linear Transformations ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \textbf{Rules}
+    \hline
+    \small{
+    	\begin{tabular}{lp{4cm} l}
+    	\\
+    	$T(\vec{x})=A\vec{x}$\\
+    	$T(\vec{x}+\vec{y})=T(\vec{x})+T(\vec{y})$\\
+    	$T(s\vec{x})=sT(\vec{x})$\\
+    	$(S\circ T)\vec{x}=BA\vec{x}$\\
+    	$A=[T(\vec{e}_1)|T(\vec{e}_2)|\dotsb|T(\vec{e}_n)]$
+		\end{tabular}
+	}
+	\vspace{.3cm}
+	\\
+    \textbf{Rotations}
+    \hline
+    \small{
+    	\begin{tabular}{lp{4cm} l}
+    	\\
+    	Rot_\theta$=\begin{bmatrix}
+    	    \cos\theta & -\sin\theta\\
+    	    \sin\theta & \cos\theta
+    	    \end{bmatrix}$\\
+    	Rot$_\theta^2(\vec{x})=$Rot$_{2\theta}(\vec{x})$
+		\end{tabular}
+	}
+	\vspace{.3cm}
+	\\
+	\textbf{Projections}
+    \hline
+    \small{
+    	\begin{tabular}{lp{4cm} l}
+    	\\
+    	Proj$_{\hat{a}}=\begin{bmatrix}
+    	    a_1^2 & a_1a_2\\
+    	    a_1a_2 & a_2^2
+    	    \end{bmatrix}$\\
+    	Proj$_{\theta}=\begin{bmatrix}
+    	    \cos^2\theta & \cos\theta\sin\theta\\
+    	    \cos\theta\sin\theta & \sin^2\theta
+    	    \end{bmatrix}$\\
+    	Proj$^2(\vec{x})=$Proj$(\vec{x})$
+		\end{tabular}
+	}
+	\vspace{.3cm}
+	\\
+	\textbf{Reflections}
+    \hline
+    \small{
+    	\begin{tabular}{lp{4cm} l}
+    	\\
+    	Ref=$2$Proj$-I$\\
+    	Ref$_{\theta}=\begin{bmatrix}
+    	    \cos(2\theta) & \sin(2\theta)\\
+    	    \sin(2\theta) & -\cos(2\theta)
+    	    \end{bmatrix}$\\
+    	Ref$_{\hat{a}}=\begin{bmatrix}
+    	    2a_1^2-1 & 2a_1a_2\\
+    	    2a_1a_2 & 2a_2^2-1
+    	    \end{bmatrix}$\\
+    	Ref$^2(\vec{x})=\vec{x}$
+		\end{tabular}
+	}
+    \end{minipage}
+};
+%------------ Linear Transformations ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Linear Transformations};
+\end{tikzpicture}
+
+%------------ Transpose ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \textbf{Identities}
+    \hline
+    \small{
+    	\begin{tabular}{lp{4cm} l}
+    	\\
+    	$(A^T)^T=A$\\
+    	$(A+B)^T=A^T+B^T$\\
+    	$(kA)^T=kA^T$\\
+    	$(AB)^T=B^TA^T$
+		\end{tabular}
+	}
+	\vspace{.3cm}
+	\\
+	\textbf{Decomposition of a Matrix}
+    \hline
+    \small{
+    	\begin{tabular}{lp{4cm} l}
+    	\\
+    	j$^{th}$ column $=A\vec{e}_j$\\
+    	i$^{th}$ row $=\vec{e}_i^TA$\\
+    	Entry $a_{ij}=\vec{e}_i^TA\vec{e}_j$
+		\end{tabular}
+	}
+	\vspace{.3cm}
+	\\
+	\textbf{Dot Product}
+    \hline
+    \small{
+    	\begin{tabular}{lp{4cm} l}
+    	\\
+    	$\vec{a}\cdot\vec{b}=\vec{a}^T\vec{b}$
+		\end{tabular}
+	}
+    \end{minipage}
+};
+%------------ Transpose ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Transpose};
+\end{tikzpicture}
+
+
+%------------ Determinants ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \textbf{2x2 and 3x3 Determinants}
+    \hline
+    \small{
+    	\begin{tabular}{lp{5cm} l}
+    	\\
+    	$\det(A)=|A|$\\
+    	$\det\begin{bmatrix}
+    	    a & b\\
+    	    c & d
+    	\end{bmatrix}=ad-cb$\\
+    	$\det\begin{bmatrix}
+    	    a & b & c\\
+    	    d & e & f\\
+    	    g & h & i
+    	\end{bmatrix}=a\begin{vmatrix}
+    	    e & f\\
+    	    h & i
+    	\end{vmatrix}-b\begin{vmatrix}
+    	    d & f\\
+    	    g & i
+    	\end{vmatrix}+c\begin{vmatrix}
+    	    d & e\\
+    	    g & h
+    	\end{vmatrix}$
+		\end{tabular}
+	}
+	\vspace{.3cm}
+	\\
+	\textbf{General}
+    \hline
+    \small{
+    	\begin{tabular}{lp{4cm} l}
+    	\\
+    	$\det(A)=\det(A^T)$\\
+    	$\det(A^{-1})=\frac{1}{\det(A)}$\\
+    	$\det(A^x)=\det(A)^x$\\
+    	$\det(AB)=\det(A)\det(B)$\\
+    	$\det(kA)=k^n\det(A)$ where $n$ is the matrix size\\
+    	$\det(A)=\lambda_1\lambda_2\dotsb\lambda_n$
+		\end{tabular}
+	}
+	\vspace{.3cm}
+	\\
+	\textbf{Simplifying Determinants}
+    \hline
+    \small{
+    	\begin{tabular}{lp{4cm} l}
+    	\\
+    	Swap Rows & $\det(B)=-\det(A)$\\
+    	Multiply Row by k: & $\det(B)=k\det(A)$\\                        
+    	Add Factor of a Row & $\det(B)=\det(A)$\\
+    	\\
+		\end{tabular}
+    	The determinant of a triangular matrix is the product of the diagonals
+	}
+    \end{minipage}
+};
+%------------ Determinants ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Determinants};
+\end{tikzpicture}
+%------------ Inverse ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \small{
+    	\begin{tabular}{lp{4cm} l}
+    	A is invertible iff $\det(A)\neq0$\\
+    	If A is invertible then:\\
+    	$A^{-1}A=AA^{-1}=I$\\
+    	$(A^{-1})^{-1}=A$\\
+    	$(kA)^{-1}=\frac{1}{k}A^{-1}$\\
+    	$(AB)^{-1}=B^{-1}A^{-1}$\\
+    	$(A^T)^{-1}=(A^{-1})^T$\\
+    	
+		\end{tabular}
+	}
+    \end{minipage}
+};
+%------------ Inverse ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Inverse};
+\end{tikzpicture}
+
+%------------ Complex Numbers ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \textbf{Definitions}
+    \hline
+    \small{
+    	\begin{tabular}{lp{4cm} l}
+    	\\
+    	Imaginary Number & $i^2=-1$\\
+    	Complex Number & $z=a+ib$\\
+    	Conjugate & $\overline{z}=a-ib$\\
+    	Real Part & $\Re(z)=\frac{z+\overline{z}}{2}$\\
+    	Imaginary Part & $\Im(z)=\frac{z-\overline{z}}{2}$\\
+    	Norm & $|z|=\sqrt{a^2+b^2}$\\
+		\end{tabular}
+	}
+	\vspace{.3cm}
+	\\
+    \textbf{Operations and Identities}
+    \hline
+    \small{
+    	\begin{tabular}{lp{4cm} l}
+    	$\overline{zu}=\overline{z}\cdot\overline{u}$\\
+    	$\overline{(z\pm u)}=\overline{z}\pm\overline{u}$\\
+    	$z\cdot\overline{z}=|z|^2$\\
+    	$|zu|=|z||u|$\\
+    	$\frac{u}{z}=\frac{u\overline{z}}{|z|^2}$\\
+		\end{tabular}
+	}
+		\vspace{.3cm}
+	\\
+    \textbf{Polar Form}
+    \hline
+    \small{
+    	\begin{tabular}{lp{4cm} l}
+    	\\
+    	$e^{i\theta}=\cos\theta+i\sin{\theta}=$\\
+    	$z=|z|e^{i\theta}$\\
+    	$\arg(z)=\theta=\arctan(\frac{b}{a})$\\
+		\end{tabular}
+	}
+    \end{minipage}
+};
+%------------ Complex Numbers ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Complex Numbers};
+\end{tikzpicture}
+
+
+%------------ Eigen-Analysis ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+    \textbf{General Formulas (to be updated by Friday)}
+    \hline
+    \small{
+    	\begin{tabular}{lp{4cm} l}
+    	$\det(A-I\lambda)=0$\\
+    	$A\vec{v}=\lambda\vec{v}$
+		\end{tabular}
+	}
+	\vspace{.15cm}
+	\\
+	\textbf{Solving Method}
+	\hline
+    \small{
+    	\begin{tabular}{lp{6cm} l}
+    	Step 1: & Use $\det(A-I\lambda)=0$ to solve for $\lambda$\\
+    	Step 2: & Use $[A-I\lambda_i][\vec{v}_i]=\vec{0}$ to solve for each eigenvector $\vec{v}_i$\\
+    	Step 3: & To find $A^n\vec{x}$, set $\vec{x}=c_1\vec{v}_1+c_2\vec{v}_2+\dotsb$\\
+    	Step 4: & Solve $\vec{v}_1$ $\vec{v}_2$ $ \dotsb][\vec{c}]=\vec{x}$ to solve for coefficients\\
+    	Step 5: & Set $A^n\vec{x}=c_1\lambda_1^n\vec{v}_2+c_2\lambda_2^n\vec{v}_2+\dotsb$\\
+    	(Step 6:) & Each conjugate pair can be expressed as $2\Re(c_i\lambda_i^n\vec{v}_i)$
+		\end{tabular}
+	}
+    \end{minipage}
+};
+%------------ Eigen ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Eigen-Analysis};
+\end{tikzpicture}
+
+%------------ Differential Eqns ---------------
+\begin{tikzpicture}
+\node [mybox] (box){%
+    \begin{minipage}{0.3\textwidth}
+	\textbf{Solving Method}
+	\hline
+    \small{
+    	\begin{tabular}{lp{6cm} l}
+    	Step 1: & Set $\frac{d\vec{x}}{dt}=A\vec{x}$\\
+    	Step 2: & Find eigenvalues and eigenvectors of $A$\\
+    	Step 3: & Write $\vec{x}(t)=c_1e^{\lambda_1t}\vec{v}_1+c_2e^{\lambda_2t}\vec{v}_2+\dotsb$ as the general form of the solution.\\
+    	Step 4: & If imaginary, express conjugate pairs as $c_1\vec{P}(t)+c_2\vec{Q}(t)$\\
+    	 & Where $\vec{P}(t)=\Re(e^{\alpha t}\vec{v}_1(\cos(\beta t)+i\sin(\beta t))$\\
+    	  & and $\vec{Q}(t)=\Im(e^{\alpha t}\vec{v}_1(\cos(\beta t)+i\sin(\beta t))$\\
+    	Step 5: & Use initial conditions to solve for coefficients\\
+		\end{tabular}
+	}
+	\vspace{.3cm}
+	\\
+	\textbf{LCR Circuits}
+	\hline
+    \small{
+    	\begin{tabular}{lp{6cm} l}
+    	\\
+    	Step 1: & Write voltage and current equations\\
+    	Step 2: & Express $i$ and $E$ in terms of $I$ and $V$\\
+    	Step 3: & Write differential equations of form $\frac{dV}{dt}=\pm\frac{i}{C}$ and $\frac{dI}{dt}=\pm\frac{E}{L}$\\
+    	Step 4: & Express system of differential equations in matrix form\\
+    	Step 5: & Solve differential equation for various $I(t)$ and $V(t)$
+		\end{tabular}
+	}
+    \end{minipage}
+};
+%------------ Differential Eqns ---------------------
+\node[fancytitle, right=10pt] at (box.north west) {Differential Equations};
+\end{tikzpicture}
+
+
+
+%-------------------Authorship-----------------------
+\begin{center}
+    \framebox{
+    \parbox[t][.5cm]{7.5cm}{
+    \addvspace{0.2cm} \centering 
+    \footnotesize Compiled by Tyler Wilson 2021 
+    } 
+}
+\end{center}
+\end{multicols*}
+
+
+
+\end{document}
+
+
+Contact GitHub API Training Shop Blog About
+© 2016 GitHub, Inc. Terms Privacy Security Status Help
