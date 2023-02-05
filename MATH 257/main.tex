@@ -1,0 +1,192 @@
+\documentclass[11pt, fleqn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage{amsmath,amssymb,array}
+\usepackage{dsfont}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{polynom}
+\usepackage{mathrsfs}
+\setlength{\parindent}{0em}
+
+% Definitions for shortcuts
+\newcommand{\ih}{\hat{i}}
+\newcommand{\jh}{\hat{j}}
+\newcommand{\kh}{\hat{k}}
+\newcommand{\nh}{\hat{n}}
+\newcommand{\vx}{\vec{x}}
+\newcommand{\vy}{\vec{y}}
+\newcommand{\vz}{\vec{z}}
+\newcommand{\vn}{\vec{n}}
+\newcommand{\vr}{\vec{r}}
+\newcommand{\vv}{\vec{v}}
+\newcommand{\va}{\vec{a}}
+\newcommand{\vb}{\vec{b}}
+\newcommand{\vc}{\vec{c}}
+\newcommand{\vu}{\vec{u}}
+\newcommand{\dydx}{\frac{dy}{dx}}
+\newcommand{\Ra}{\Rightarrow}
+\newcommand{\<}{\langle}
+\renewcommand{\>}{\rangle}
+\newcommand{\brangle}[1]{\left\langle #1 \right\rangle}
+\newcommand{\brround}[1]{\left( #1 \right)}
+\newcommand{\brcurly}[1]{\left\{ #1 \right\}}
+\newcommand{\brsquare}[1]{\left[ #1 \right]}
+\newcommand{\brvertical}[1]{\left| #1 \right|}
+\newcommand{\matrixx}[1]{\left[\begin{matrix} #1
+\end{matrix}\right]}
+\newcommand{\detmatrix}[1]{\left|\begin{matrix} #1
+\end{matrix}\right|}
+\newcommand{\perm}[2]{\prescript{}{#1}{P}_{#2}}
+\newcommand{\comb}[2]{\prescript{}{#1}{C}_{#2}}
+\newcommand{\eval}[1]{\left. #1 \right|}
+\newcommand{\bigfrac}[2]{\frac{\displaystyle{#1}}{\displaystyle{#2}}}
+\newcommand{\eqnsystem}[1]{\left\{\begin{matrix} #1 \end{matrix}\right.}
+\newcommand{\R}{\mathds{R}}
+\newcommand{\augmatrix}[2]{\left[\begin{array}{#1|c}#2\end{array}\right]}
+\newcommand{\superaugmatrix}[2]{\left[\begin{array}{#1|#1}#2\end{array}\right]}
+\newcommand{\Z}{\mathds{Z}}
+\newcommand{\Lap}{\mathscr{L}}
+\DeclareMathOperator{\trace}{tr}
+
+
+
+\title{Math 257 Summary Sheet}
+\author{by Tyler Wilson}
+\date{}
+
+
+
+
+
+
+
+
+
+
+
+% --- Writing starts here ---
+
+
+\begin{document}
+\allowdisplaybreaks
+\begin{center}
+    \huge{
+    \textbf{Math 257 Summary Sheet}}\\
+    \vspace{0.2cm}
+    \normalsize created by Tyler Wilson 2022
+\end{center}
+
+\section*{Ordinary Differential Equations}
+Linear ODEs: $y'+p(x)y=g(x)$ will have a solution of the form
+$$\frac{d}{dx}(yr)=rg,\ r=e^{\int p(x)dx}$$
+Constant coefficients: $ay''+by'+cy=0$. You can write the characteristic equation as $ar^2+br+c=0$ and the general solution will be
+$$y(x)=\eqnsystem{Ae^{r_1x}+Be^{r_2x} & r_1\neq r_2\in\R\\ Ae^{rx}+Bxe^{rx} & r_1=r_2\\ e^{\lambda x}\brround{A\sin(\mu x)+B\cos(\mu x)} & r=\lambda\pm i\mu}$$
+Cauchy-Euler: $ax^2y''+bxy'+cy=0$. You can write the characteristic equation as ${ar(r-1)+br+c=0}$ and the general solution will be
+$$y(x)=\eqnsystem{Ax^{r_1}+Bx^{r_2} & r_1\neq r_2\in\R\\ Ax^r+Bx^r\ln|x| & r_1=r_2\\ x^\lambda\brround{A\sin(\mu\ln|x|)+B\cos(\mu\ln|x|)} & r=\lambda\pm i\mu}\\ $$
+Nonhomogeneous equations: You can write the solution as $y(x)=y_c+y_p$ and can use undetermined coefficients to find $y_p$\\
+\begin{tabular}{c|c}
+    $f(x)$ & guess\\
+    \hline
+    $e^{\alpha x}$ & $ae^{\alpha x}$\\
+    $\sin(\omega x)$ & $a\cos(\omega x)+b\sin(\omega x)$\\
+    $\cos(\omega x)$ & $a\cos(\omega x)+b\sin(\omega x)$\\
+    $t^n$ & $a_0+a_1t+a_2t^2+\cdots+a_nt^n$
+\end{tabular}\\
+If there is any overlap with the complementary solution then you multiply your guess by $x$
+
+\section*{Series Solutions}
+For writing series solutions of $y''+p(x)y'+q(x)y=0$ about $x=x_0$\\
+If $x_0$ is an ordinary point,
+$$y=\sum_{n=0}^\infty a_n (x-x_0)^n$$
+If the limit as $x\to x_0$ of any of $p(x),\ q(x),\ p'(x),\ q'(x)$ does not exist, $x_0$ is a singular point.\\
+Then, if $\lim\limits_{x\to x_0}(x-x_0)p(x)=\alpha_0$ and $\lim\limits_{x\to x_0}(x-x_0)^2q(x)=\beta_0$ both exist, $x_0$ is a regular singular point.\\
+The indicial equation is given by $r(r-1)+\alpha_0r+\beta_0=0$ and the general solution will depend on the type of solution of $r$.\\
+If $r_1-r_2\not\in\Z$ (most common case for us) then,
+$$y_1=\sum_{n=0}^\infty a_n(x-x_0)^{n+r_1},\ y_2=\sum_{n=0}^\infty a_n (x-x_0)^{n+r_2}$$
+If $r_1=r_2$ then,
+$$y_1=\sum_{n=0}^\infty a_n(x-x_0)^{n+r},\ y_2=y_1(x)\ln(x-x_0)+\sum_{n=1}^\infty b_n(x-x_0)^{n+r}$$
+If $|r_1-r_2|\in\mathbb{N}$ then,
+$$y_1=\sum_{n=0}^\infty a_n(x-x_0)^{n+r_1},\ y_2=ay_1(x)\ln(x-x_0)+\sum_{n=0}^\infty b_n(x-x_0)^{n+r_2}$$
+\section*{Homogeneous Heat Equation}
+General solutions for different boundary conditions:
+\begin{itemize}
+    \item $u(0,t)=u(L,t)=0$ (Dirichlet)
+    \begin{align*}
+        &\lambda_n=\brround{\frac{n\pi}{L}}^2\\
+        &X_n=\sin\brround{\frac{n\pi x}{L}}\\
+        &T_n=e^{-\alpha^2\brround{\frac{n\pi}{L}}^2t}\\
+        &n\geq1\\
+    \end{align*}
+    \item $u_x(0,t)=u_x(L,t)=0$ (Neumann)
+    \begin{align*}
+        &\lambda_n=0,\ \brround{\frac{n\pi}{L}}^2\\
+        &X_n=1,\ \cos\brround{\frac{n\pi x}{L}}\\
+        &T_n=1,\ e^{-\alpha^2\brround{\frac{n\pi}{L}}^2t}\\
+        &n\geq1\\
+    \end{align*}
+    \item $u(0,t)=u(L,t)$ and $u_x(0,t)=u_x(L,t)$ (Periodic)
+    \begin{align*}
+        &\lambda_n=0,\ \brround{\frac{n\pi}{L}}^2\\
+        &X_n=1,\ \sin\brround{\frac{n\pi x}{L}},\ \cos\brround{\frac{n\pi x}{L}}\\
+        &T_n=1,\ e^{-\alpha^2\brround{\frac{n\pi}{L}}^2t}\\
+        &n\geq1\\
+    \end{align*}
+    \item $u(0,t)=u_x(L,t)=0$ (Mixed type 1)
+    \begin{align*}
+        &\lambda_n=\brround{\frac{2n-1}{2L}\pi}^2\\
+        &X_n=\sin\brround{\frac{2n-1}{2L}\pi x}\\
+        &T_n=e^{-\alpha^2\brround{\frac{2n-1}{2L}\pi}^2t}\\
+        &n\geq1\\
+    \end{align*}
+    \item $u_x(0,t)=u(L,t)$ (Mixed type 2)
+    \begin{align*}
+        &\lambda_n=\brround{\frac{2n-1}{2L}\pi}^2\\
+        &X_n=\cos\brround{\frac{2n-1}{2L}\pi x}\\
+        &T_n=e^{-\alpha^2\brround{\frac{2n-1}{2L}\pi}^2t}\\
+        &n\geq1\\
+    \end{align*}
+\end{itemize}
+The solution in each case will be of the form $u(x,t)=\sum\limits_{n=n_0}^\infty X_n(x)T_n(t)$ where the sum starts at either $n_0=0$ or $n_0=1$ depending on the boundary conditions.
+\section*{Fourier Series}
+The Fourier series is given by
+$$f(x)=a_0+\sum_{n=1}^\infty a_n\cos\brround{\frac{n\pi x}{L}}+\sum_{n=1}^\infty b_n\sin\brround{\frac{n\pi x}{L}}$$
+\begin{tabular}{ccc}
+    $\displaystyle{a_0=\frac{1}{2L}\int_{-L}^Lf(x)dx}$ & $\displaystyle{a_n=\frac{1}{L}\int_{-L}^Lf(x)\cos\brround{\frac{n\pi x}{L}}dx}$ & $\displaystyle{b_n=\frac{1}{L}\int_{-L}^Lf(x)\sin\brround{\frac{n\pi x}{L}}dx}$
+\end{tabular}\\
+We can use the Fourier series to create a function identical to our IC, $u(x,0)$ and get the coefficients in our PDE.\\
+Another way to do this is by exploiting orthogonality in which case, the following integrals will be of use.
+\begin{align*}
+    &\int_{-L}^L\sin\brround{\frac{n\pi x}{L}}\sin\brround{\frac{m\pi x}{L}}dx=\eqnsystem{0 & m\neq n\\ L & m=n}\\
+    &\int_{-L}^L\cos\brround{\frac{n\pi x}{L}}\cos\brround{\frac{m\pi x}{L}}dx=\eqnsystem{0 & m\neq n\\ L & m=n\neq 0\\ 2L & m=n=0}\\
+    &\int_{-L}^L\sin\brround{\frac{n\pi x}{L}}\cos\brround{\frac{m\pi x}{L}}dx=0\\
+    &\cos(n\pi)=(-1)^n\\
+    &\sin(n\pi)=0
+\end{align*}
+\section*{Finite Difference Approximations}
+Want to solve to get $u_i^{k+1}$ in terms of $u^k$ terms so we can solve for the next time step.\\
+Formulas:
+\begin{align*}
+    &\text{Forward: }f'(x_0)=\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}+\mathcal{O}(\Delta x)\\
+    &\text{Backward: } f'(x_0)=\frac{f(x_0)-f(x_0-\Delta x)}{\Delta x}+\mathcal{O}(\Delta x)\\
+    &\text{Centre: }f'(x_0)=\frac{f(x_0+\Delta x)-f(x_0-\Delta x)}{2\Delta x}+\mathcal{O}(\Delta x^2)\\
+    &\text{2nd Order: }f''(x_0)=\frac{f(x_0+\Delta x)-2f(x_0)+f(x_0-\Delta x)}{\Delta x^2}+\mathcal{O}(\Delta x^2)
+\end{align*}
+More formulas can be derived using Taylor series as a starting point.\\
+Index notation: we write $x=i\Delta x$ and $t=k\Delta t$ and so $u_i^k=u(i\Delta x,k\Delta t)$ where $i$ is the step in $x$ and $k$ is the time step.\\
+Method: We use the above formulas to write expressions for $u_t$ and $u_{xx}$, plug them into our PDE, and solve for $u_i^{k+1}$. The expression with $\mathcal{O}(\Delta x^2,\Delta t)$ is given by
+$$u_i^{k+1}=\alpha^2\frac{\Delta t}{\Delta x^2}\brround{u_{i+1}^k-2u_i^k+u_{i-1}^k}+u_i^k$$
+From here we use our IC to get points for $u^0_i$ and use the BCs to get information about the points at the edges. For example,
+\begin{align*}
+    &u(0,t)=0\Ra u_0^k=0\ \forall k\\
+    &u_x(0,t)=0\Ra \frac{u_1^k-u_{-1}^k}{2\Delta x}=0\Ra u_{-1}^k=u_1^k
+\end{align*}
+
+
+
+
+
+
+\end{document}
+
